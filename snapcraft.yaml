@@ -74,6 +74,7 @@ parts:
     build-environment:
       - PKG_CONFIG_PATH: ${CRAFT_STAGE}/opt/${CRAFT_PROJECT_NAME}/lib/pkgconfig:${CRAFT_STAGE}/opt/${CRAFT_PROJECT_NAME}/lib/${CRAFT_ARCH_TRIPLET_BUILD_ON}/pkgconfig:${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}
       - LD_LIBRARY_PATH: ${CRAFT_STAGE}/opt/${CRAFT_PROJECT_NAME}/lib/${CRAFT_ARCH_TRIPLET_BUILD_ON}:${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+    cmake-generator: Ninja
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX=/opt/${CRAFT_PROJECT_NAME}
@@ -87,7 +88,7 @@ parts:
       - node/24/stable
     build-packages:
       - g++
-      - make
+      - ninja-build
       - libspdlog-dev
       - libconfig-dev
       - libmicrohttpd-dev
